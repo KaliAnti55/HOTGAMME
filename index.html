@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTGAMME Parfums - Votre Signature Olfactive d'Exception</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Découvrez une collection infinie de parfums de luxe chez HOTGAMME. Trouvez votre signature olfactive unique parmi les plus grandes maisons. Service de recherche personnalisé disponible.">
+    <meta name="keywords" content="parfums, luxe, HOTGAMME, Chanel, Dior, Tom Ford, Guerlain, YSL, Creed, MFK, achat parfum, parfum homme, parfum femme, signature olfactive, Maroc">
+    <link rel="canonical" href="https://kalianti55.github.io/HOTGAMME/"> <!-- Replace with your actual domain -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icone.png">
+    <link rel="apple-touch-icon" href="icone.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kalianti55.github.io/HOTGAMME/"> <!-- Replace -->
+    <meta property="og:title" content="HOTGAMME Parfums - L'Art de la Signature Olfactive">
+    <meta property="og:description" content="Explorez notre vaste catalogue de parfums de créateurs et de niche. Trouvez l'introuvable avec HOTGAMME.">
+    <meta property="og:image" content="hotgamme-social-preview.jpg"> <!-- Replace with an actual URL to a good preview image (e.g., your logo or a hero shot) -->
+    <meta property="og:site_name" content="HOTGAMME Parfums">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kalianti55.github.io/HOTGAMME/"> <!-- Replace -->
+    <meta property="twitter:title" content="HOTGAMME Parfums - L'Art de la Signature Olfactive">
+    <meta property="twitter:description" content="Explorez notre vaste catalogue de parfums de créateurs et de niche. Trouvez l'introuvable avec HOTGAMME.">
+    <meta property="twitter:image" content="hotgamme-social-preview.jpg"> <!-- Replace -->
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Schema.org for Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "HOTGAMME Parfums",
+      "url": "https://kalianti55.github.io/HOTGAMME/", // Replace
+      "logo": "https://kalianti55.github.io/HOTGAMME/icone.png", // Replace with URL to your logo
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+212-661-843495",
+        "contactType": "Customer Service",
+        "areaServed": "MA", // Morocco
+        "availableLanguage": ["French", "Arabic"]
+      },
+      "sameAs": [ // Add your social media links if any
+        // "https://www.facebook.com/yourprofile",
+        // "https://www.instagram.com/yourprofile"
+      ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#">HOTGAMME</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Découvrir</a></li>
+                <li><a href="#catalogue-section">Catalogue</a></li>
+                <li><a href="#contact">Nous Joindre</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero">
+            <div class="hero-background-animation">
+                <div class="hero-bulb bulb1"></div>
+                <div class="hero-bulb bulb2"></div>
+                <div class="hero-bulb bulb3"></div>
+                <div class="hero-bulb bulb4"></div>
+                <div class="hero-bulb bulb5"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title"><span>Explorez.</span> <span>Sentez.</span> <span>Vibrez.</span></h1>
+                <p class="hero-subtitle">Votre prochaine signature olfactive vous attend. Une collection infinie à portée de main.</p>
+                <a href="#catalogue-section" class="cta-button primary-button">Voir notre Collection</a>
+            </div>
+        </section>
+
+        <section class="whatsapp-banner">
+            <p><strong>Un parfum spécifique en tête ? Même s'il n'est pas listé, nous pouvons le trouver pour vous !</strong> Contactez-nous sur WhatsApp : <a href="https://wa.me/212661843495" target="_blank" rel="noopener noreferrer">+212 661-843495</a>.</p>
+        </section>
+
+        <section id="catalogue-section" class="perfume-list-section">
+            <h2>Notre Vaste Sélection par Maison</h2>
+
+            <div class="filters-container">
+                <input type="search" id="searchInput" placeholder="Rechercher par nom ou marque..." aria-label="Rechercher un parfum">
+                <div class="filter-group">
+                    <select id="brandFilter" aria-label="Filtrer par marque">
+                        <option value="">Toutes les Marques</option>
+                    </select>
+                    <select id="genderFilter" aria-label="Filtrer par genre">
+                        <option value="">Tous les Genres</option>
+                        <option value="Femme">Femme</option>
+                        <option value="Homme">Homme</option>
+                        <option value="Mixte">Mixte</option>
+                    </select>
+                </div>
+                <div class="filter-actions">
+                    <button id="wishlistFilterBtn" class="secondary-button" aria-pressed="false">
+                        <span class="heart-icon">♡</span> Mes Favoris (<span id="wishlistCount">0</span>)
+                    </button>
+                    <button id="clearFiltersBtn" class="secondary-button">Réinitialiser</button>
+                </div>
+                <p id="perfumeCount" class="perfume-count-display" role="status" aria-live="polite"></p>
+            </div>
+
+            <div id="brandsShowcaseContainer" class="brands-showcase-container">
+                <!-- Perfume list will be dynamically generated here -->
+                <p class="loading-message">Chargement des parfums...</p>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+             <h2>Une Perle Rare en Tête ?</h2>
+             <p>Notre mission est de dénicher chaque trésor olfactif que vous désirez. Contactez-nous, décrivez votre recherche, et laissez la magie opérer.</p>
+             <a href="https://wa.me/212661843495?text=Bonjour%20HOTGAMME%20Parfums%2C%20je%20recherche%20un%20parfum%20spécifique..." class="whatsapp-button-large" target="_blank" rel="noopener noreferrer">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.75 21.33 10.35 21.72 12.04 21.72C17.5 21.72 21.95 17.27 21.95 11.81C21.95 6.35 17.5 2 12.04 2ZM12.04 20.03C10.56 20.03 9.13 19.69 7.89 19.05L7.53 18.84L4.42 19.7L5.33 16.67L5.1 16.31C4.38 14.99 4.03 13.48 4.03 11.91C4.03 7.52 7.62 3.93 12.04 3.93C16.46 3.93 20.05 7.52 20.05 11.91C20.05 16.3 16.46 20.03 12.04 20.03ZM17.49 14.36C17.23 14.23 16.1 13.68 15.87 13.59C15.63 13.51 15.46 13.46 15.29 13.73C15.12 13.99 14.64 14.54 14.51 14.71C14.37 14.88 14.24 14.9 14.01 14.81C13.77 14.73 12.99 14.47 12.06 13.62C11.31 12.92 10.79 12.12 10.64 11.85C10.49 11.59 10.62 11.45 10.74 11.33C10.85 11.21 11 10.99 11.13 10.82C11.26 10.65 11.31 10.52 11.41 10.32C11.51 10.12 11.46 9.95 11.39 9.82C11.33 9.68 10.87 8.56 10.69 8.18C10.51 7.81 10.33 7.86 10.18 7.86C10.02 7.86 9.85 7.86 9.68 7.86C9.51 7.86 9.25 7.92 9.01 8.18C8.78 8.45 8.27 8.92 8.27 9.94C8.27 10.96 9.03 11.92 9.16 12.09C9.29 12.26 10.89 14.66 13.24 15.73C13.81 15.99 14.26 16.15 14.61 16.28C15.15 16.47 15.61 16.44 15.98 16.39C16.4 16.32 17.31 15.78 17.49 15.49C17.67 15.21 17.67 14.99 17.61 14.88C17.55 14.76 17.35 14.49 17.49 14.36Z"/>
+                </svg>
+                <span>Discutons sur WhatsApp</span>
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="currentYear"></span> HOTGAMME Parfums. L'élixir de vos désirs.</p>
+    </footer>
+
+    <a href="https://wa.me/212661843495?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20parfums." class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Contactez-nous sur WhatsApp">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+             <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.75 21.33 10.35 21.72 12.04 21.72C17.5 21.72 21.95 17.27 21.95 11.81C21.95 6.35 17.5 2 12.04 2ZM12.04 20.03C10.56 20.03 9.13 19.69 7.89 19.05L7.53 18.84L4.42 19.7L5.33 16.67L5.1 16.31C4.38 14.99 4.03 13.48 4.03 11.91C4.03 7.52 7.62 3.93 12.04 3.93C16.46 3.93 20.05 7.52 20.05 11.91C20.05 16.3 16.46 20.03 12.04 20.03ZM17.49 14.36C17.23 14.23 16.1 13.68 15.87 13.59C15.63 13.51 15.46 13.46 15.29 13.73C15.12 13.99 14.64 14.54 14.51 14.71C14.37 14.88 14.24 14.9 14.01 14.81C13.77 14.73 12.99 14.47 12.06 13.62C11.31 12.92 10.79 12.12 10.64 11.85C10.49 11.59 10.62 11.45 10.74 11.33C10.85 11.21 11 10.99 11.13 10.82C11.26 10.65 11.31 10.52 11.41 10.32C11.51 10.12 11.46 9.95 11.39 9.82C11.33 9.68 10.87 8.56 10.69 8.18C10.51 7.81 10.33 7.86 10.18 7.86C10.02 7.86 9.85 7.86 9.68 7.86C9.51 7.86 9.25 7.92 9.01 8.18C8.78 8.45 8.27 8.92 8.27 9.94C8.27 10.96 9.03 11.92 9.16 12.09C9.29 12.26 10.89 14.66 13.24 15.73C13.81 15.99 14.26 16.15 14.61 16.28C15.15 16.47 15.61 16.44 15.98 16.39C16.4 16.32 17.31 15.78 17.49 15.49C17.67 15.21 17.67 14.99 17.61 14.88C17.55 14.76 17.35 14.49 17.49 14.36Z"/>
+        </svg>
+    </a>
+
+    <button id="backToTopBtn" title="Retour en haut" aria-label="Retour en haut de la page">↑</button>
+
+    <!-- Welcome Modal for First-Time Visitors -->
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>Bienvenue chez HOTGAMME Parfums ! ✨</h2>
+            <p>Notre sélection en ligne est vaste, mais l'univers des senteurs est infini. Vous cherchez une pépite introuvable ou souhaitez explorer des merveilles au-delà de notre catalogue visible ?</p>
+            <p><strong>Nous excellons dans la recherche de l'exceptionnel.</strong> N'hésitez pas à nous contacter sur WhatsApp, nous serions ravis de vous aider à dénicher votre prochaine signature olfactive.</p>
+            <a href="https://wa.me/212661843495?text=Bonjour%20HOTGAMME%20Parfums%2C%20je%20suis%20nouveau%2Fnouvelle%20et%20j%27aimerais%20explorer%20davantage%20!" class="cta-button primary-button modal-whatsapp-button" target="_blank" rel="noopener noreferrer">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.75 21.33 10.35 21.72 12.04 21.72C17.5 21.72 21.95 17.27 21.95 11.81C21.95 6.35 17.5 2 12.04 2ZM12.04 20.03C10.56 20.03 9.13 19.69 7.89 19.05L7.53 18.84L4.42 19.7L5.33 16.67L5.1 16.31C4.38 14.99 4.03 13.48 4.03 11.91C4.03 7.52 7.62 3.93 12.04 3.93C16.46 3.93 20.05 7.52 20.05 11.91C20.05 16.3 16.46 20.03 12.04 20.03ZM17.49 14.36C17.23 14.23 16.1 13.68 15.87 13.59C15.63 13.51 15.46 13.46 15.29 13.73C15.12 13.99 14.64 14.54 14.51 14.71C14.37 14.88 14.24 14.9 14.01 14.81C13.77 14.73 12.99 14.47 12.06 13.62C11.31 12.92 10.79 12.12 10.64 11.85C10.49 11.59 10.62 11.45 10.74 11.33C10.85 11.21 11 10.99 11.13 10.82C11.26 10.65 11.31 10.52 11.41 10.32C11.51 10.12 11.46 9.95 11.39 9.82C11.33 9.68 10.87 8.56 10.69 8.18C10.51 7.81 10.33 7.86 10.18 7.86C10.02 7.86 9.85 7.86 9.68 7.86C9.51 7.86 9.25 7.92 9.01 8.18C8.78 8.45 8.27 8.92 8.27 9.94C8.27 10.96 9.03 11.92 9.16 12.09C9.29 12.26 10.89 14.66 13.24 15.73C13.81 15.99 14.26 16.15 14.61 16.28C15.15 16.47 15.61 16.44 15.98 16.39C16.4 16.32 17.31 15.78 17.49 15.49C17.67 15.21 17.67 14.99 17.61 14.88C17.55 14.76 17.35 14.49 17.49 14.36Z"/>
+                </svg>
+                Discuter sur WhatsApp
+            </a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

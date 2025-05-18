@@ -1,0 +1,994 @@
+/* Réinitialisation et Variables Globales */
+:root {
+    --primary-gradient: linear-gradient(135deg, #6A11CB 0%, #2575FC 100%); /* Violet vers Bleu */
+    --primary-color-solid: #5A00E0; /* Un violet solide pour certains éléments */
+    --accent-color: #FF6B6B; /* Un corail/rouge doux pour les accents */
+    --surface-color: #FFFFFF;
+    --background-color: #F8F7FC; /* Blanc cassé très clair */
+    --text-color-dark: #1A1A1A; /* Presque noir pour les titres */
+    --text-color-medium: #4A4A4A; /* Gris foncé pour le corps */
+    --text-color-light: #757575; /* Gris plus clair */
+    --on-primary-color: #FFFFFF;
+
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+
+    --border-radius-small: 8px;
+    --border-radius-medium: 16px;
+    --border-radius-large: 30px; /* Pour les boutons "pilule" */
+
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 8px 25px rgba(74, 0, 224, 0.15); /* Ombre avec une teinte primaire */
+    --shadow-strong: 0 12px 35px rgba(74, 0, 224, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-secondary);
+    background-color: var(--background-color);
+    color: var(--text-color-medium);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header et Navigation */
+header {
+    background-color: rgba(255, 255, 255, 0.85); /* Blanc translucide */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+nav .logo a {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    background-image: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color-medium);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 0.2rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: var(--primary-gradient);
+    transition: width 0.4s ease;
+}
+
+.nav-links a:hover, .nav-links a:focus {
+    color: var(--primary-color-solid);
+}
+.nav-links a:hover::after, .nav-links a:focus::after {
+    width: 100%;
+}
+
+.burger { display: none; cursor: pointer; }
+.burger div { width: 28px; height: 3px; background-color: var(--primary-color-solid); margin: 5px; border-radius: 3px; transition: all 0.3s ease; }
+
+/* Section Hero */
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--background-color); /* Peut-être un dégradé subtil ou une image de fond très légère */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before { /* Effet de grain subtil */
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23F8F7FC" width="100" height="100"/><circle cx="20" cy="20" r="1" fill="rgba(0,0,0,0.03)"/><circle cx="70" cy="70" r="1" fill="rgba(0,0,0,0.03)"/><circle cx="30" cy="80" r="0.5" fill="rgba(0,0,0,0.02)"/><circle cx="80" cy="30" r="0.5" fill="rgba(0,0,0,0.02)"/></svg>');
+    opacity: 0.5;
+    z-index: 0;
+}
+
+
+.hero-content {
+    max-width: 800px;
+    position: relative; /* Pour être au-dessus du ::before */
+    z-index: 1;
+}
+
+.hero-title {
+    font-family: var(--font-primary);
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive font size */
+    font-weight: 700;
+    color: var(--text-color-dark);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+.hero-title span {
+    display: inline-block;
+    background-image: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    padding: 0.1em 0.05em; /* Pour que le dégradé soit visible */
+}
+
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--text-color-medium);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.primary-button {
+    font-family: var(--font-primary);
+    background-image: var(--primary-gradient);
+    color: var(--on-primary-color);
+    padding: 0.9rem 2.2rem;
+    text-decoration: none;
+    border-radius: var(--border-radius-large);
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    border: none;
+    box-shadow: var(--shadow-medium);
+}
+
+.primary-button:hover, .primary-button:focus {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: var(--shadow-strong);
+}
+
+/* Bannière WhatsApp Spéciale */
+.whatsapp-banner {
+    background-color: var(--primary-color-solid);
+    color: var(--on-primary-color);
+    text-align: center;
+    padding: 1.2rem 1rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.whatsapp-banner a {
+    color: var(--on-primary-color);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.whatsapp-banner a:hover {
+    color: color-mix(in srgb, var(--on-primary-color) 80%, var(--accent-color));
+}
+
+/* Section Liste des Parfums */
+.perfume-list-section {
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+.perfume-list-section h2 {
+    font-family: var(--font-primary);
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    color: var(--text-color-dark);
+    position: relative;
+    display: inline-block;
+}
+.perfume-list-section h2::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    bottom: -10px;
+    left: 20%;
+    background-image: var(--primary-gradient);
+}
+
+.perfume-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem 2rem;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.perfume-item {
+    background-color: var(--surface-color);
+    padding: 1.2rem 1.5rem;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid transparent; /* For hover effect */
+}
+
+.perfume-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    border-left-color: var(--primary-color-solid);
+}
+
+.perfume-item .brand {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-color-solid);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.perfume-item .name {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--text-color-medium);
+    font-weight: 500;
+}
+
+/* Section Contact */
+.contact-section {
+    padding: 4rem 5%;
+    text-align: center;
+    background-color: color-mix(in srgb, var(--primary-color-solid) 5%, var(--background-color)); /* Léger fond teinté */
+}
+
+.contact-section h2 {
+    font-family: var(--font-primary);
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-color-dark);
+}
+
+.contact-section p {
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.whatsapp-button-large {
+    background-color: #25D366;
+    color: white;
+    padding: 0.9rem 1.8rem;
+    text-decoration: none;
+    border-radius: var(--border-radius-large);
+    font-weight: 600;
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    border: none;
+}
+.whatsapp-button-large .whatsapp-icon {
+    /* Le SVG a déjà un fill="currentColor", donc la couleur du texte (white) s'appliquera */
+}
+
+.whatsapp-button-large:hover, .whatsapp-button-large:focus {
+    background-color: #1DAE54;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(29, 174, 84, 0.4);
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-color-dark);
+    color: color-mix(in srgb, var(--on-primary-color) 70%, transparent);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    font-size: 0.95rem;
+}
+footer p { margin-bottom: 0.3rem; }
+
+/* Bouton Flottant WhatsApp (FAB) */
+.whatsapp-fab {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366;
+    color: white; /* Important pour le fill="currentColor" du SVG */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+    border: none;
+}
+
+.whatsapp-fab svg {
+    /* Déjà défini dans l'HTML: width="32" height="32" fill="currentColor" */
+}
+
+.whatsapp-fab:hover {
+    background-color: #1DAE54;
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 8px 20px rgba(29, 174, 84, 0.5);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    nav .logo a { font-size: 1.7rem; }
+    .nav-links {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        background-color: var(--surface-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+        max-width: 300px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Effet "rebond" */
+        box-shadow: -5px 0px 20px rgba(0,0,0,0.1);
+    }
+    .nav-links li { margin-left: 0; margin-bottom: 2.5rem; opacity: 0; }
+    .nav-links a { font-size: 1.2rem; color: var(--text-color-dark); }
+    .nav-links a:hover, .nav-links a:focus { color: var(--primary-color-solid); }
+    .nav-links a::after { background-image: none; background-color: var(--primary-color-solid); }
+
+
+    .burger { display: block; z-index: 1001; position: relative; }
+    .nav-active { transform: translateX(0%); }
+    .nav-active li { opacity: 1; transition: opacity 0.4s ease forwards; }
+    .nav-active li:nth-child(1) { transition-delay: 0.15s; }
+    .nav-active li:nth-child(2) { transition-delay: 0.25s; }
+    .nav-active li:nth-child(3) { transition-delay: 0.35s; }
+
+    .toggle .line1 { transform: rotate(-45deg) translate(-6px, 7px); }
+    .toggle .line2 { opacity: 0; }
+    .toggle .line3 { transform: rotate(45deg) translate(-6px, -7px); }
+
+    .hero { min-height: 70vh; padding: 3rem 1.5rem; }
+    .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .hero-subtitle { font-size: clamp(0.9rem, 4vw, 1.1rem); }
+
+    .perfume-list-section h2, .contact-section h2 { font-size: 2.2rem; }
+    .perfume-list-container { grid-template-columns: 1fr; gap: 1rem; } /* Une seule colonne sur mobile */
+    .perfume-item { padding: 1rem 1.2rem; }
+}
+/* Welcome Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Vertical center */
+    justify-content: center; /* Horizontal center */
+}
+
+.modal-content {
+    background-color: #fefefe; /* Light background for the modal */
+    color: #333; /* Darker text for readability */
+    margin: auto;
+    padding: 30px 40px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px; /* Max width */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    position: relative; /* For positioning the close button */
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+}
+
+.modal-content h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.8em; /* Slightly larger title */
+    margin-bottom: 20px;
+    color: #1a1a1a; /* Darker heading */
+}
+
+.modal-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1em; /* Readable text */
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modal-content p strong {
+    font-weight: 600;
+    color: #D4AF37; /* Gold accent color, adjust if needed */
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333; /* Darker on hover */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style the WhatsApp button in the modal to match other primary buttons */
+.modal-whatsapp-button {
+    background-color: #25D366; /* WhatsApp Green */
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1.1em;
+    display: inline-flex; /* To align icon and text */
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none; /* Remove default border if any */
+    margin-top: 15px; /* Spacing from the text */
+}
+
+.modal-whatsapp-button:hover {
+    background-color: #1DAE52; /* Darker WhatsApp green */
+    transform: translateY(-2px);
+}
+
+.modal-whatsapp-button .whatsapp-icon { /* Ensure icon color is white */
+    fill: white;
+}
+
+/* Initially hide the modal - JS will show it */
+.modal {
+    display: none;
+}
+/* ----- Styles for Brand Grouping ----- */
+
+.brands-showcase-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem; /* Increased gap for more visual separation between brands */
+}
+
+.brand-group {
+    /* You can add borders or background if you want more visual separation per brand */
+    /* background-color: #fff; */
+    /* border-radius: var(--border-radius-medium); */
+    /* padding: 1.5rem; */
+    /* box-shadow: var(--shadow-soft); */
+}
+
+.brand-group-title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.8rem, 4vw, 2.2rem); /* Responsive brand title */
+    color: var(--text-color-dark);
+    margin-bottom: 2rem; /* Space below brand title before perfume grid */
+    text-align: left;
+    padding-bottom: 0.75rem; /* Space for the underline */
+    border-bottom: 3px solid; /* Solid underline */
+    border-image-slice: 1; /* Ensure the entire border is the gradient */
+    border-image-source: var(--primary-gradient); /* Use your primary gradient */
+    display: inline-block; /* So underline only spans text width */
+    width: auto; /* Ensure it doesn't take full width by default */
+}
+
+/* Adjusting the main perfume list section title's bottom margin */
+.perfume-list-section h2 {
+    margin-bottom: 3.5rem; /* More space before the first brand group */
+}
+
+/*
+   The class .perfume-list-container is REUSED for the grid of perfumes
+   under each brand. Its existing grid styles should apply.
+   Example:
+   .perfume-list-container {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+       gap: 1.5rem 2rem;
+       text-align: left;
+       max-width: 1200px; /* This might need to be 100% if brand-group has max-width */
+       /* margin: 0 auto; /* This might need to be 0 if brand-group handles centering */
+   }
+   You might want to ensure max-width and margin are appropriate for its new context.
+   If .brand-group defines a max-width and margin auto, then .perfume-list-container
+   inside it should probably be width: 100%; and margin: 0;
+*/
+
+/*
+   Since the <span class="brand"> inside .perfume-item is removed,
+   the following style is no longer needed and can be removed or commented out:
+
+   .perfume-item .brand {
+       display: block;
+       font-weight: 600;
+       color: var(--primary-color-solid);
+       font-size: 0.9rem;
+       margin-bottom: 0.25rem;
+       text-transform: uppercase;
+       letter-spacing: 0.5px;
+   }
+*/
+
+/* Ensure the perfume name still looks good */
+.perfume-item .name {
+    display: block;
+    font-size: 1.1rem; /* Or adjust as needed */
+    color: var(--text-color-medium);
+    font-weight: 500;
+}
+/* ... (existing styles remain mostly the same) ... */
+
+/* ----- Styles for Filters Container ----- */
+.filters-container {
+    background-color: var(--surface-color);
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    position: sticky; /* Make filters sticky */
+    top: 70px; /* Adjust based on your header height */
+    z-index: 900;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.filters-container input[type="search"],
+.filters-container select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-small);
+    font-size: 0.95rem;
+    font-family: var(--font-secondary);
+    flex-grow: 1;
+}
+.filters-container input[type="search"] {
+    min-width: 250px;
+}
+.filters-container select {
+    min-width: 180px;
+    background-color: white; /* Ensure select background is white */
+}
+
+
+.filter-group {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 2;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.secondary-button {
+    padding: 0.75rem 1.2rem;
+    background-color: #e9e7f1;
+    color: var(--primary-color-solid);
+    border: 1px solid color-mix(in srgb, var(--primary-color-solid) 30%, transparent);
+    border-radius: var(--border-radius-small);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: var(--font-secondary);
+}
+.secondary-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color-solid) 15%, transparent);
+    border-color: var(--primary-color-solid);
+}
+
+#wishlistFilterBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+#wishlistFilterBtn.active {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+#wishlistFilterBtn.active .heart-icon {
+    color: white;
+}
+
+.heart-icon {
+    font-size: 1.2em;
+    color: var(--accent-color);
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.perfume-item-actions .wishlist-btn.active .heart-icon {
+    color: var(--accent-color); /* Filled heart color */
+    transform: scale(1.1);
+}
+
+
+.perfume-count-display {
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    margin-left: auto; /* Pushes it to the right if space allows */
+    white-space: nowrap;
+}
+
+
+/* ----- Styles for Perfume Items (enhancements) ----- */
+.perfume-item {
+    /* ... existing styles ... */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes actions to bottom */
+    min-height: 120px; /* Ensure some consistency */
+}
+
+.perfume-item-info {
+    margin-bottom: 1rem;
+}
+
+.perfume-item .name {
+    font-size: 1.15rem; /* Slightly larger */
+    font-weight: 600; /* Bolder name */
+    color: var(--text-color-dark);
+    margin-bottom: 0.3rem;
+}
+
+.perfume-item .perfume-gender {
+    font-size: 0.85rem;
+    color: var(--text-color-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.perfume-item-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: auto; /* Pushes actions to the bottom */
+}
+
+.perfume-item-actions .inquire-btn,
+.perfume-item-actions .wishlist-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+    font-family: var(--font-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.perfume-item-actions .inquire-btn {
+    background-image: var(--primary-gradient);
+    color: var(--on-primary-color);
+    border: none;
+    flex-grow: 1; /* Takes more space if available */
+}
+.perfume-item-actions .inquire-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.perfume-item-actions .wishlist-btn {
+    background-color: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color); /* For the text part of button if any */
+}
+.perfume-item-actions .wishlist-btn:hover {
+    background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
+}
+.perfume-item-actions .wishlist-btn .heart-icon {
+    font-size: 1.3em; /* Make icon slightly larger in button */
+}
+
+
+/* ----- Back to Top Button ----- */
+#backToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 90px; /* Above WhatsApp FAB */
+    right: 30px;
+    z-index: 990;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color-solid);
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    box-shadow: var(--shadow-medium);
+    transition: background-color 0.3s, opacity 0.3s, transform 0.3s;
+}
+#backToTopBtn:hover {
+    background-color: color-mix(in srgb, var(--primary-color-solid) 80%, black);
+    transform: scale(1.1);
+}
+
+.loading-message, .no-results-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-color-medium);
+    padding: 2rem;
+    width: 100%;
+}
+
+
+/* Responsive adjustments for filters */
+@media screen and (max-width: 768px) {
+    .filters-container {
+        flex-direction: column;
+        align-items: stretch;
+        top: 60px; /* Adjust if header height changes on mobile */
+    }
+    .filter-group {
+        flex-direction: column;
+    }
+    .filters-container input[type="search"],
+    .filters-container select {
+        width: 100%;
+    }
+    .perfume-count-display {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+    .filter-actions {
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+/* Ensure perfume item contents are well-behaved */
+.perfume-item .name {
+    word-break: break-word;
+}
+/* ----- Top Information Banner ----- */
+.top-info-banner {
+    background-color: #333333; /* A dark, distinct background for the banner */
+    color: #f8f8f8;       /* Light text color for contrast */
+    text-align: center;
+    padding: 0.6em 1em;     /* Padding using 'em' for scalability */
+    font-size: 0.9rem;      /* Slightly smaller than main text */
+    font-weight: 500;
+    line-height: 1.4;       /* Good line height for readability */
+    /* This banner is part of the normal document flow and will scroll with the page. */
+    /* Your existing header will then become sticky as designed. */
+}
+
+.top-info-banner p {
+    margin: 0; /* Remove default paragraph margins */
+}
+
+/* Ensure existing header sticks correctly after this banner */
+header {
+    background-color: rgba(255, 255, 255, 0.85); /* Blanc translucide */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0; /* Header will stick to the viewport top after the .top-info-banner scrolls out of view */
+    z-index: 1000;
+    width: 100%;
+}
+
+/*
+   No changes should be strictly necessary for .filters-container's sticky behavior
+   as its 'top: 70px;' is relative to the viewport. Once the header sticks at top: 0,
+   the filters will stick 70px below the viewport top (effectively below the sticky header,
+   assuming header height is less than 70px, or with some overlap if header is taller).
+   If you want precise positioning of filters below the header, JavaScript would be needed
+   to calculate header height. For now, the existing setup should still be acceptable.
+*/
+/* ... (Keep all existing CSS) ... */
+
+/* ----- Hero Background Animation ----- */
+.hero {
+    /* min-height: 85vh; ... (existing) */
+    /* ... (existing hero styles) ... */
+    position: relative; /* Crucial for positioning bulbs absolutely within */
+    overflow: hidden;   /* Prevent bulbs from showing outside hero */
+}
+
+.hero-background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Ensure it's behind hero-content */
+    pointer-events: none; /* So it doesn't interfere with clicks */
+}
+
+.hero-bulb {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0; /* Start hidden, fade in with animation */
+    /* Basic Glass Effect: gradient for shine + subtle border/shadow */
+    /* The shine is a lighter version of the bulb's base color */
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), /* Inner subtle light */
+                0 0 15px rgba(0, 0, 0, 0.1); /* Outer subtle shadow for depth */
+    /* mix-blend-mode: screen; /* Experiment with blend modes if background allows */
+    animation-name: floatAndFade;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* --- Glass Effect Detail & Colors --- */
+/* We'll use pseudo-elements for a more distinct highlight */
+.hero-bulb::before {
+    content: '';
+    position: absolute;
+    top: 10%; /* Position of highlight */
+    left: 10%;
+    width: 40%; /* Size of highlight */
+    height: 40%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 60%, transparent 100%);
+    transform: rotate(-30deg); /* Angle the shine */
+    opacity: 0.7;
+}
+
+
+/* --- Individual Bulb Styles & Animations --- */
+/* Color 1: From --primary-color-solid (Violet) */
+.hero-bulb.bulb1 {
+    width: 120px;
+    height: 120px;
+    background-color: rgba(90, 0, 224, 0.5); /* Base color: --primary-color-solid with alpha */
+    top: 10%;
+    left: 15%;
+    animation-duration: 25s;
+    animation-delay: 0s;
+}
+
+/* Color 2: From --accent-color (Coral/Red) */
+.hero-bulb.bulb2 {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 107, 107, 0.45); /* Base color: --accent-color with alpha */
+    top: 60%;
+    left: 75%;
+    animation-duration: 30s;
+    animation-delay: 5s; /* Stagger animations */
+}
+
+/* Color 3: From primary-gradient (Blue part) */
+.hero-bulb.bulb3 {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(37, 117, 252, 0.4); /* Base color: Blue from gradient with alpha */
+    top: 30%;
+    left: 40%;
+    animation-duration: 35s;
+    animation-delay: 2s;
+}
+
+/* Color 4: Another shade of Violet/Purple */
+.hero-bulb.bulb4 {
+    width: 90px;
+    height: 90px;
+    background-color: rgba(106, 17, 203, 0.55); /* Base color: Purple from gradient with alpha */
+    top: 70%;
+    left: 5%;
+    animation-duration: 28s;
+    animation-delay: 8s;
+}
+
+/* Color 5: A lighter, blended accent */
+.hero-bulb.bulb5 {
+    width: 110px;
+    height: 110px;
+    background-color: rgba(176, 66, 180, 0.4); /* A mix towards pink/purple */
+    top: 15%;
+    left: 85%;
+    animation-duration: 32s;
+    animation-delay: 3s;
+}
+
+
+/* --- Animation Keyframes --- */
+@keyframes floatAndFade {
+    0% {
+        transform: translateY(20px) translateX(10px) scale(0.95) rotate(-5deg);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-15px) translateX(-20px) scale(1.05) rotate(3deg);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(10px) translateX(25px) scale(1) rotate(8deg);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translateY(-25px) translateX(5px) scale(0.9) rotate(-6deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(20px) translateX(10px) scale(0.95) rotate(-5deg);
+        opacity: 0.3;
+    }
+}
+
+
+/* Ensure hero content is above the animation */
+.hero-content {
+    /* max-width: 800px; ... (existing) */
+    position: relative; /* Keep relative to stay in flow */
+    z-index: 1;       /* Ensure content is above bulbs */
+}
