@@ -165,7 +165,7 @@ nav .logo a {
 
 .hero-subtitle {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
-    color: var(--text-color-medium);
+    color: white;
     margin-bottom: 2.5rem;
     max-width: 600px;
     margin-left: auto;
@@ -855,140 +855,39 @@ header {
 */
 /* ... (Keep all existing CSS) ... */
 
-/* ----- Hero Background Animation ----- */
+/* ----- Hero Video Background ----- */
 .hero {
-    /* min-height: 85vh; ... (existing) */
-    /* ... (existing hero styles) ... */
-    position: relative; /* Crucial for positioning bulbs absolutely within */
-    overflow: hidden;   /* Prevent bulbs from showing outside hero */
+    /* Ensure these are set for the hero section if not already */
+    position: relative;
+    overflow: hidden; /* Good to keep to prevent any accidental overflow */
 }
 
-.hero-background-animation {
+.hero-video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative; /* Ensure it's positioned relative to the hero section */
+    z-index: 2;       /* Make sure it's above the video background */
+}
+/* ----- Hero Video Glass Overlay Effect ----- */
+.hero-glass-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Ensure it's behind hero-content */
-    pointer-events: none; /* So it doesn't interfere with clicks */
-}
+    z-index: 1; /* Overlay is above the video */
 
-.hero-bulb {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0; /* Start hidden, fade in with animation */
-    /* Basic Glass Effect: gradient for shine + subtle border/shadow */
-    /* The shine is a lighter version of the bulb's base color */
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), /* Inner subtle light */
-                0 0 15px rgba(0, 0, 0, 0.1); /* Outer subtle shadow for depth */
-    /* mix-blend-mode: screen; /* Experiment with blend modes if background allows */
-    animation-name: floatAndFade;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-/* --- Glass Effect Detail & Colors --- */
-/* We'll use pseudo-elements for a more distinct highlight */
-.hero-bulb::before {
-    content: '';
-    position: absolute;
-    top: 10%; /* Position of highlight */
-    left: 10%;
-    width: 40%; /* Size of highlight */
-    height: 40%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.1) 60%, transparent 100%);
-    transform: rotate(-30deg); /* Angle the shine */
-    opacity: 0.7;
-}
-
-
-/* --- Individual Bulb Styles & Animations --- */
-/* Color 1: From --primary-color-solid (Violet) */
-.hero-bulb.bulb1 {
-    width: 120px;
-    height: 120px;
-    background-color: rgba(90, 0, 224, 0.5); /* Base color: --primary-color-solid with alpha */
-    top: 10%;
-    left: 15%;
-    animation-duration: 25s;
-    animation-delay: 0s;
-}
-
-/* Color 2: From --accent-color (Coral/Red) */
-.hero-bulb.bulb2 {
-    width: 80px;
-    height: 80px;
-    background-color: rgba(255, 107, 107, 0.45); /* Base color: --accent-color with alpha */
-    top: 60%;
-    left: 75%;
-    animation-duration: 30s;
-    animation-delay: 5s; /* Stagger animations */
-}
-
-/* Color 3: From primary-gradient (Blue part) */
-.hero-bulb.bulb3 {
-    width: 150px;
-    height: 150px;
-    background-color: rgba(37, 117, 252, 0.4); /* Base color: Blue from gradient with alpha */
-    top: 30%;
-    left: 40%;
-    animation-duration: 35s;
-    animation-delay: 2s;
-}
-
-/* Color 4: Another shade of Violet/Purple */
-.hero-bulb.bulb4 {
-    width: 90px;
-    height: 90px;
-    background-color: rgba(106, 17, 203, 0.55); /* Base color: Purple from gradient with alpha */
-    top: 70%;
-    left: 5%;
-    animation-duration: 28s;
-    animation-delay: 8s;
-}
-
-/* Color 5: A lighter, blended accent */
-.hero-bulb.bulb5 {
-    width: 110px;
-    height: 110px;
-    background-color: rgba(176, 66, 180, 0.4); /* A mix towards pink/purple */
-    top: 15%;
-    left: 85%;
-    animation-duration: 32s;
-    animation-delay: 3s;
-}
-
-
-/* --- Animation Keyframes --- */
-@keyframes floatAndFade {
-    0% {
-        transform: translateY(20px) translateX(10px) scale(0.95) rotate(-5deg);
-        opacity: 0.3;
-    }
-    25% {
-        transform: translateY(-15px) translateX(-20px) scale(1.05) rotate(3deg);
-        opacity: 0.6;
-    }
-    50% {
-        transform: translateY(10px) translateX(25px) scale(1) rotate(8deg);
-        opacity: 0.4;
-    }
-    75% {
-        transform: translateY(-25px) translateX(5px) scale(0.9) rotate(-6deg);
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateY(20px) translateX(10px) scale(0.95) rotate(-5deg);
-        opacity: 0.3;
-    }
-}
-
-
-/* Ensure hero content is above the animation */
-.hero-content {
-    /* max-width: 800px; ... (existing) */
-    position: relative; /* Keep relative to stay in flow */
-    z-index: 1;       /* Ensure content is above bulbs */
-}
+    /* The Frosted Glass Effect */
+    /* Adjust blur, brightness, and saturation to your liking */
+    backdrop-filter: blur(10px) brightness(110%) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) brightness(110%) saturate(120%); /* For Safari compatibility */
