@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2STNES6S3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Y2STNES6S3');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOTGAMME Parfums - Votre Signature Olfactive d'Exception</title>
@@ -86,13 +77,17 @@
 
     <main>
         <section id="accueil" class="hero">
-            <div class="hero-background-animation">
-                <div class="hero-bulb bulb1"></div>
-                <div class="hero-bulb bulb2"></div>
-                <div class="hero-bulb bulb3"></div>
-                <div class="hero-bulb bulb4"></div>
-                <div class="hero-bulb bulb5"></div>
-            </div>
+            <!-- Video Background -->
+            <video autoplay loop muted playsinline class="hero-video-background">
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- End Video Background -->
+
+            <!-- Overlay for the Glass Effect -->
+            <div class="hero-glass-overlay"></div>
+            <!-- End Overlay -->
+
             <div class="hero-content">
                 <h1 class="hero-title"><span>Explorez.</span> <span>Sentez.</span> <span>Vibrez.</span></h1>
                 <p class="hero-subtitle">Votre prochaine signature olfactive vous attend. Une collection infinie à portée de main.</p>
